@@ -5,26 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>歡迎來到我的 GitHub 網站！</title>
     <style>
-        /* 網頁的基本樣式 */
         body {
             font-family: sans-serif;
             margin: 40px;
             background-color: #ffffff;
         }
-        h1 {
-            color: #000000;
-        }
-        p {
-            color: #333333;
-        }
+        h1 { color: #000000; }
+        p { color: #333333; }
         
-        /* 📌 這是最關鍵的：設定地圖的寬度和高度，否則地圖會隱形 */
+        /* 設定地圖的寬度和高度 */
         #map {
             margin-top: 20px;
-            height: 450px;    /* 地圖高度：450像素 */
-            width: 100%;      /* 地圖寬度：滿版 */
+            height: 450px;
+            width: 100%;
             border: 1px solid #ccc;
-            border-radius: 8px; /* 讓地圖邊角圓圓的，比較好看 */
+            border-radius: 8px;
         }
     </style>
 </head>
@@ -35,30 +30,24 @@
 
     <div id="map"></div>
 
-    <script>
-      (g=>{var h=window,e="ams",q="Request",js=["maps"],m=h[e]||(h[e]={}),p=m.snippets||(m.snippets={}),c=()=>{var s=document.createElement("script");
-      // ⚠️ 請記得把下方的 YOUR_API_KEY 換成你手上的那一長串金鑰！
-      s.src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6X_jnYl1SBCbEPMiiTEHOCAudU3J451M&callback=initMap&v=weekly";
-      s.async=true;document.head.appendChild(s)};if(!m[q]){c();m[q]=1}})();
-    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6X_jnYl1SBCbEPMiiTEHOCAudU3J451M&callback=initMap" async defer></script>
 
     <script>
-        let map;
         function initMap() {
-            // 🎯 設定地圖中心點座標（這裡預設以台北車站為例，你可以自行上網查經緯度來換掉）
+            // 設定地圖中心點（預設台北車站）
             const myLocation = { lat: 25.0478, lng: 121.5170 };
             
-            // 建立地圖物件
-            map = new google.maps.Map(document.getElementById("map"), {
+            // 建立地圖
+            const map = new google.maps.Map(document.getElementById("map"), {
                 center: myLocation,
-                zoom: 15, // 縮放比例（數字越大越近）
+                zoom: 15
             });
 
-            // 在地圖上加上一個紅色的大頭針 (Marker)
+            // 加上紅色大頭針
             new google.maps.Marker({
                 position: myLocation,
                 map: map,
-                title: "我的位置" // 鼠標移上去時顯示的文字
+                title: "我的位置"
             });
         }
     </script>
